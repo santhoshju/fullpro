@@ -1,0 +1,67 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background: url('background.png') repeat-x 0 0 scroll;
+    /* background-color: #0C0C0C;
+    height: 100%;
+    width: 100%; */
+}
+
+input {
+    width: 30rem;
+    padding: 15px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+::placeholder {
+    color: black;
+    font-size: 18px;
+}
+
+button {
+    font-size: 20px;
+    font-weight: 700;
+    width: 80%;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.whole{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10%;
+}
+.main{
+    width: 60%;
+    border-radius: 30px;
+
+}
+.names{
+    background-color: rgb(229, 231, 233);
+    width: 30rem;
+    border-radius: 35px;
+    padding: 30px;
+}
+.info{
+    background-color: rgb(229, 231, 233);
+    width: 30rem;
+    border-radius: 40px;
+    padding: 30px;
+}
+.basic{
+    background-color: rgb(229, 231, 233);
+    width: 30rem;
+    border-radius: 40px;
+    padding: 30px;
+}
