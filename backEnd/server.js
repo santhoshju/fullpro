@@ -7,7 +7,7 @@ const cors = require("cors");
 app.use(cors());
 app.use(express.json());
 app.use(bodyparser.json());
-app.use(bodyparser.urlencoded({ extended: true }));
+app.use(bodyparser.urlencoded({ extended: false }));
 
 app.post("/api/post", async (req, res) => {
   const { firstname, lastname, email, mobile_number, dob, address } = req.body;
@@ -32,7 +32,7 @@ app.post("/api/post", async (req, res) => {
 });
 
 app.get("/get", (req, res) => {
-  const sqlGet = "select * from employees";
+  const sqlGet = "SELECT * FROM employees ORDER BY id DESC";
   pool.query(sqlGet, (error, result) => {
     if (error) {
       console.error("Error executing query:", error);
@@ -56,10 +56,6 @@ app.get("/get/:id", (req, res) => {
     }
   });
 });
-;
-
-
-
 app.delete("/remove/:id", async (req, res) => {
   const { id } = req.params;
   const sqlRemove = "DELETE FROM employees WHERE id = $1";
@@ -77,7 +73,6 @@ app.delete("/remove/:id", async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
-
 
 app.put("/put/:id", (req, res) => {
   const { id } = req.params;
@@ -97,6 +92,26 @@ app.put("/put/:id", (req, res) => {
       }
     }
   );
+});
+
+app.get("/get/email/:email", async (req, res) => {
+  const email = req.params["email"]; // Get email from URL parameter
+  console.log(email);
+
+  try {
+    const sqlGet = "SELECT * FROM employees WHERE email = $1";
+
+    const result = await pool.query(sqlGet, [email]);
+
+    if (result.rows.length > 0) {
+      res.json(result.rows);
+    } else {
+      res.json([]);
+    }
+  } catch (error) {
+    console.error("Error getting user by email:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
 });
 
 app.listen(5001, () => {

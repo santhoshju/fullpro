@@ -5,6 +5,7 @@ import "./Home.css";
 import { Toast, toast } from "react-toastify";
 import axios from "axios";
 import { ToastContainer } from "react-toastify";
+import Pagination from "./Pagination";
 
 const Home = () => {
   const [data, setData] = useState([]);
@@ -25,11 +26,19 @@ const Home = () => {
     }
   };
 
+  const[currentpage,setCurrentpage] = useState(1);
+  const recordPerPage = 5;
+  const last = currentpage * recordPerPage;
+  const first = last - recordPerPage;
+  const records = data.slice(first,last);
+  const npage = Math.ceil(data.length / recordPerPage);
+  const numbers = [...Array(npage + 1).keys()].slice(1);
+
   return (
-    <div style={{ marginTop: "150px"}}>
+    <div style={{ marginTop: "150px" }}>
       <Link to="/addContact">
-        <div  style={{display:"flex",justifyContent:"center"}} >
-        <button className="btn btn-contact" > Add Employee</button>
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <button className="btn btn-contact"> Add Employee</button>
         </div>
       </Link>
       <table className="table">
@@ -53,7 +62,7 @@ const Home = () => {
                 <td>{item.firstname}</td>
                 <td>{item.lastname}</td>
                 <td>{item.email}</td>
-                <td>{item.mobilenumber}</td>
+                <td>{item.mobile_number}</td>
                 <td>{item.dob}</td>
                 <td>{item.address}</td>
                 <td>
@@ -71,15 +80,20 @@ const Home = () => {
                       Delete
                     </button>
                   </Link>
-                  <Link to={`view/${item.id}`}>
+                  {/* <Link to={`view/${item.id}`}>
                     <button className="btn btn-view">Read</button>
-                  </Link>
+                  </Link> */}
                 </td>
               </tr>
             );
           })}
         </tbody>
       </table>
+      {/* <Pagination
+        currentPage={currentpage}
+        totalPages={npage}
+        onPageChange={setCurrentpage}
+      /> */}
       <ToastContainer />
     </div>
   );

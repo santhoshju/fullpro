@@ -3,12 +3,31 @@
     margin: 0;
 }
 
+
 body {
-    background: url('background.png') repeat-x 0 0 scroll;
-    /* background-color: #0C0C0C;
+    background: url('background.png') repeat-x 0 0 fixed;
+    background-color: #0C0C0C;
     height: 100%;
-    width: 100%; */
+    width: 100%;
 }
+
+.whole {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 8%;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    border-radius: 12px;
+}
+
+form {
+    margin: auto;
+}
+
 
 input {
     width: 30rem;
@@ -20,48 +39,69 @@ input {
     box-sizing: border-box;
 }
 
+
 ::placeholder {
     color: black;
     font-size: 18px;
 }
 
+
 button {
-    font-size: 20px;
-    font-weight: 700;
     width: 80%;
-    color: white;
-    padding: 14px 20px;
+    padding: 10px 20px;
     margin: 8px 0;
     border: none;
-    border-radius: 4px;
+    border-radius: 14px;
     cursor: pointer;
 }
-.whole{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 10%;
-}
-.main{
-    width: 60%;
-    border-radius: 30px;
 
-}
-.names{
-    background-color: rgb(229, 231, 233);
-    width: 30rem;
-    border-radius: 35px;
+
+.names {
+    background: url('background.png') repeat-x 0 0 scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(243, 238, 238);
     padding: 30px;
+    border-radius: 30px;
 }
-.info{
-    background-color: rgb(229, 231, 233);
-    width: 30rem;
-    border-radius: 40px;
+
+.info {
+    background: url('background.png') repeat-x 0 0 scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(243, 238, 238);
     padding: 30px;
+    border-radius: 30px;
 }
-.basic{
-    background-color: rgb(229, 231, 233);
-    width: 30rem;
-    border-radius: 40px;
+
+.basic {
+    background: url('background.png') repeat-x 0 0 scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 30px;
+    border-radius: 30px;
+}
+
+#goback {
+    background-color: green;
+    border-radius: 14px;
+    font-size: 25px;
+    font-weight: bold;
+    color: white;
+}
+
+#save {
+    background-color: rgba(11, 55, 233, 0.98);
+    border-radius: 14px;
+    font-size: 25px;
+    font-weight: bold;
+    color: white;
+}
+
+.design {
+    background-color: white;
+    border-radius: 25px;
 }
